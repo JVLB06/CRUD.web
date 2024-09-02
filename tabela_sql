@@ -1,0 +1,12 @@
+CREATE TABLE basic(
+id int(4) PRIMARY KEY AUTO_INCREMENT,
+nome varchar(30),
+nasce date,
+email varchar(30),
+job varchar(20),
+fone varchar(13),
+celular varchar(13),
+zap boolean,
+sms boolean, 
+email_livre boolean
+);
