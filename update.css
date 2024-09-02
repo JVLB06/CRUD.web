@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    font-family: Arial, sans-serif; /* Define a fonte do corpo */
+    padding-bottom: 50px; /* Espaço para o footer fixo */
+}
+
+header {
+    background-color: rgb(7, 142, 208);
+    padding: 10px 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ajuste o valor conforme necessário */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    max-height: 100px;
+    width: auto;
+}
+
+nav {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-left: 20px; 
+}
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Cria duas colunas iguais */
+    gap: 20px; /* Espaço entre as colunas */
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px auto; /* Centraliza o formulário na página */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container p1 {
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Adiciona espaçamento abaixo do rótulo */
+}
+
+.form-container .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.checkbox-container {
+    grid-column: span 1; /* Faz a checkbox ocupar ambas as colunas */
+    text-align: center; /* Centraliza o texto */
+    margin-top: 1rem; /* Adiciona um espaço acima */
+}
+
+.checkbox-container input {
+    margin-right: 0.5rem; /* Espaçamento à direita da checkbox */
+}
+
+.form-container button {
+    grid-column: span 2; /* Faz o botão ocupar ambas as colunas */
+    padding: 10px;
+    background-color: rgb(7, 142, 208);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; /* Ajusta o tamanho da fonte do botão */
+}
+
+.form-container button:hover {
+    background-color: rgb(7, 142, 208);
+}
