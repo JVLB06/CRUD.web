@@ -56,23 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (strpos($action, 'editar_' !== false)) {
         //Formulário de atualização
         $id = str_replace('editar_', '', $action);
-        
-        $name = "Emanoelli";
-        $email = "manu@gmail.com";
-        $nasce = date("2006-02-23");
-        $job = "Developer";
-        $fone = "41123456789";
-        $celular = "41123456789";
-        $zap = 1;
-        $sms = 1;
-        $lmail = 1;
-        // Insere o comando
-        $sql = "UPDATE basic SET nome=?, nasce=?, email=?, job=?, fone=?, celular=?, zap=?, sms=?, email_livre=? WHERE id=?";
-        // Formata para o envio do comando
-        $stmt = $mysql->prepare($sql);
-        $stmt->bind_param("ssssssiiii", $name, $nasce, $email, $job, $fone, $celular, $zap, $sms, $lmail, $id);
-        // Executa o comando
-        $stmt->execute();
     }
 }
 echo "<style>
@@ -132,6 +115,7 @@ if ($pesquisa->num_rows > 0) {
 
     // Itera sobre os resultados e cria uma linha para cada registro
     while ($row = $pesquisa->fetch_assoc()) {
+        $id = str_replace('editar_', '', $action);
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['nome']) . "</td>";
         echo "<td>" . htmlspecialchars($row['email']) . "</td>";
@@ -139,7 +123,7 @@ if ($pesquisa->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['celular']) . "</td>";
         echo "<td>";
         echo "<form action='update.php' method='GET' style='display:inline;'>";
-        echo "<input type="hidden" name="id" value='<?php echo htmlspecialchars($id); ?>''>";
+        echo "<input type='hidden' name='id' value='<?php echo htmlspecialchars($id); ?>''>";
         echo "<button type='submit' name='ação' value='editar_{$row['id']}' class='btn btn-primary'><img src='editar.png'></button>";
         echo "</form> ";
         echo "<form method='POST' style='display:inline;'>";
