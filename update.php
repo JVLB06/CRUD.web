@@ -15,28 +15,36 @@ if ($mysql->connect_errno) {
 
 // Obtém o ID do registro a ser editado (passado pela URL)
 $id = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : 'Não definido';
-
-// Recebe variáveis do HTML e formata
-$name = $_POST['nome'];
-$email = $_POST['email'];
-$nasce = $_POST['born'];
-$nasce = date($nasce);
-$job = $_POST['job'];
-$fone = $_POST['fone'];
-$celular = $_POST['celular'];
-$zap = $_POST['zap'] ?? '';
-$zap = boolval($zap);
-$sms = $_POST['sms'] ?? '';
-$sms = boolval($sms);
-$lmail = $_POST['libera_email'] ?? '';
-$lmail = boolval($lmail);
+$sql = "SELECT * FROM basic";
+$pesquisa = $mysql->query($sql);
+if ($pesquisa->num_rows > 0) {
+    while ($row = $pesquisa->fetch_assoc()) {
+        if ($row['id'] === $id){
+            $name = $result['nome'];
+            $email = $result['email'];
+            $nasce = $result['born'];
+            $nasce = date($nasce);
+            $job = $result['job'];
+            $fone = $result['fone'];
+            $celular = $result['celular'];
+            $zap = $result['zap'] ?? '';
+            $zap = boolval($zap);
+            $sms = $result['sms'] ?? '';
+            $sms = boolval($sms);
+            $lmail = $result['libera_email'] ?? '';
+            $lmail = boolval($lmail);
+        }
+    }
+}
 // Insere o comando
-$sql = "UPDATE basic nome=?, nasce=?, email=?, job=?, fone=?, celular=?, zap=?, sms=?, email_livre=? WHERE id=?";
+$sql = "UPDATE basic SET nome=?, nasce=?, email=?, job=?, fone=?, celular=?, zap=?, sms=?, email_livre=? WHERE id=?";
 // Formata para o envio do comando
 $stmt = $mysql->prepare($sql);
 $stmt->bind_param("ssssssiiii", $name, $nasce, $email, $job, $fone, $celular, $zap, $sms, $lmail, $id);
 // Executa o comando
 $stmt->execute();
+$stmt->close();
+$mysql->close();
 ?>
 
 <!DOCTYPE html>
