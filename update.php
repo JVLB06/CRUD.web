@@ -57,7 +57,7 @@ $mysql->close();
     <header>
         <div class="container">
             <a href="#" class="logo">
-            <img src="logo_alphacode.png" alt="logo">
+            <img src="logo1.png" alt="logo">
             </a>
             <nav>Editar Registro</nav>
             </a href="#">
